@@ -5,7 +5,7 @@ import { Select, Message } from "semantic-ui-react";
 
 import "./App.css";
 
-const URL = "http://localhost:3001";
+const URL = "https://crud-server-zeta.vercel.app";
 
 function App() {
   const [data, setData] = useState([]);
