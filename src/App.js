@@ -119,7 +119,6 @@ function App() {
       });
       closeUpdateModal();
     } else {
-      console.log("Hi");
       setError(true);
     }
   };
@@ -132,15 +131,15 @@ function App() {
   const validTitle = () => {
     var valid = true;
     data.forEach((item) => {
-      if(item.title === newTask.title.trim()) {
+      if(item.title === newTask.title) {
         valid = false;
       }
     });
-    return newTask.title.length > 3 && valid && newTask.title.trim().length > 3;
+    return newTask.title.length > 3 && valid;
   };
 
   const validDiscription = () => {
-    return newTask.description.length > 5 && newTask.description.trim().length > 5;
+    return newTask.description.length > 5;
   };
 
   const validStatus = () => {
