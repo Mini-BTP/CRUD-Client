@@ -132,15 +132,15 @@ function App() {
   const validTitle = () => {
     var valid = true;
     data.forEach((item) => {
-      if(item.title === newTask.title) {
+      if(item.title === newTask.title.trim()) {
         valid = false;
       }
     });
-    return newTask.title.length > 3 && valid && newTask.title.trim() > 3;
+    return newTask.title.length > 3 && valid && newTask.title.trim().length > 3;
   };
 
   const validDiscription = () => {
-    return newTask.description.length > 5 && newTask.description.trim() > 5;
+    return newTask.description.length > 5 && newTask.description.trim().length > 5;
   };
 
   const validStatus = () => {
@@ -192,7 +192,7 @@ function App() {
                           placeholder={newTask.title}
                           onChange={(e) => {
                             setNewTask((prevTask) => {
-                              return { ...prevTask, title: e.target.value };
+                              return { ...prevTask, title: e.target.value.trim() };
                             });
                           }}
                         />
@@ -205,7 +205,7 @@ function App() {
                             setNewTask((prevTask) => {
                               return {
                                 ...prevTask,
-                                description: e.target.value,
+                                description: e.target.value.trim(),
                               };
                             });
                           }}
@@ -284,7 +284,7 @@ function App() {
                   placeholder="Title"
                   onChange={(e) => {
                     setNewTask((prevTask) => {
-                      return { ...prevTask, title: e.target.value };
+                      return { ...prevTask, title: e.target.value.trim() };
                     });
                   }}
                 />
@@ -295,7 +295,7 @@ function App() {
                   placeholder="Description"
                   onChange={(e) => {
                     setNewTask((prevTask) => {
-                      return { ...prevTask, description: e.target.value };
+                      return { ...prevTask, description: e.target.value.trim() };
                     });
                   }}
                 />
