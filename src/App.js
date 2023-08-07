@@ -136,11 +136,11 @@ function App() {
         valid = false;
       }
     });
-    return newTask.title.length > 3 && valid;
+    return newTask.title.length > 3 && valid && newTask.title.trim() > 3;
   };
 
   const validDiscription = () => {
-    return newTask.description.length > 5;
+    return newTask.description.length > 5 && newTask.description.trim() > 5;
   };
 
   const validStatus = () => {
