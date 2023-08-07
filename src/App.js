@@ -96,6 +96,11 @@ function App() {
   };
 
   const addTask = async () => {
+    setNewTask(prevTask => {
+        ...prevTask,
+        title: prevTask.title.trim(),
+        description: prevTask.description.trim()
+    });
     if (validTitle() && validDiscription() && validStatus()) {
       await axios.post(`${URL}/new-task`, newTask);
       setNewTask({
@@ -110,6 +115,11 @@ function App() {
   };
 
   const updateTask = async () => {
+    setNewTask(prevTask => {
+        ...prevTask,
+        title: prevTask.title.trim(),
+        description: prevTask.description.trim()
+    });
     if (validTitle() && validDiscription() && validStatus()) {
       await axios.put(`${URL}/${id}`, newTask);
       setNewTask({
@@ -191,7 +201,7 @@ function App() {
                           placeholder={newTask.title}
                           onChange={(e) => {
                             setNewTask((prevTask) => {
-                              return { ...prevTask, title: e.target.value.trim() };
+                              return { ...prevTask, title: e.target.value };
                             });
                           }}
                         />
@@ -204,7 +214,7 @@ function App() {
                             setNewTask((prevTask) => {
                               return {
                                 ...prevTask,
-                                description: e.target.value.trim(),
+                                description: e.target.value,
                               };
                             });
                           }}
@@ -283,7 +293,7 @@ function App() {
                   placeholder="Title"
                   onChange={(e) => {
                     setNewTask((prevTask) => {
-                      return { ...prevTask, title: e.target.value.trim() };
+                      return { ...prevTask, title: e.target.value };
                     });
                   }}
                 />
@@ -294,7 +304,7 @@ function App() {
                   placeholder="Description"
                   onChange={(e) => {
                     setNewTask((prevTask) => {
-                      return { ...prevTask, description: e.target.value.trim() };
+                      return { ...prevTask, description: e.target.value };
                     });
                   }}
                 />
