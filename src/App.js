@@ -97,9 +97,10 @@ function App() {
 
   const addTask = async () => {
     setNewTask(prevTask => {
-        ...prevTask,
+        return {...prevTask,
         title: prevTask.title.trim(),
         description: prevTask.description.trim()
+      }
     });
     if (validTitle() && validDiscription() && validStatus()) {
       await axios.post(`${URL}/new-task`, newTask);
@@ -116,9 +117,10 @@ function App() {
 
   const updateTask = async () => {
     setNewTask(prevTask => {
-        ...prevTask,
+      return {...prevTask,
         title: prevTask.title.trim(),
         description: prevTask.description.trim()
+      }
     });
     if (validTitle() && validDiscription() && validStatus()) {
       await axios.put(`${URL}/${id}`, newTask);
